@@ -4,7 +4,7 @@ import telnetlib
 import simplejson
 
 urls = ('/',  'Index')
-render = web.template.render('./')
+render = web.template.render('templates/')
 app = web.application(urls, globals())
 
 tn = telnetlib.socket.create_connection(('10.10.100.254', 8899))

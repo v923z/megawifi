@@ -1,6 +1,5 @@
 #include "wifi.h"
 
-
 extern volatile uint8_t control_byte;
 
 uint16_t blink, pos, id, angles[5];
