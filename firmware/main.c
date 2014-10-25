@@ -1,7 +1,5 @@
 #include "wifi.h"
-#include "serial.h"
-#include "hardware.h"
-#include "wifi_codes.h"
+
 
 extern volatile uint8_t control_byte;
 
@@ -9,7 +7,8 @@ uint16_t blink, pos, id, angles[5];
 uint8_t counter;
 
 int main (void) {
-	USART_Init();	
+	USART_Init();
+	Port_Init();
 	sei();
 	wdt_enable(WDTO_2S);
 
