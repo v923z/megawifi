@@ -3,7 +3,6 @@ var server_address = 'http://127.0.0.1:8080'
 function command_keypress(event) {
 	console.log($('#input_command').val())	
 	if(event.which == 13) {
-		//xml_http_post(server_address, 'B12N', test)
 		$.ajax({
 			type: 'POST',
 			url: server_address, 
@@ -17,5 +16,5 @@ function command_keypress(event) {
 }
 
 function submit_colour(el, rgb) {
-	alert(rgb)
+	//alert(rgb)
 }
