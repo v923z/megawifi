@@ -8,6 +8,6 @@ var modes = new Array(
 $(document).ready(function () {
 	$('aside').append('<ul id="ul_modes"></ul>')
 	for(var i in modes) {
-		$('#ul_modes').append('<li><a href=?mode=' + server_address + modes[i][1] + '>' + modes[i][0] + '</a></li>')
+		$('#ul_modes').append('<li><a href="?mode=' + modes[i][1] + '">' + modes[i][0] + '</a></li>')
 	}
 });
