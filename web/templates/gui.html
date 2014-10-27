@@ -1,29 +1,24 @@
 <html>
 	<head>
 		<script src="/static/js/jquery.min.js"></script>
+		<script src="/static/js/modes.js"></script>
 		<script src="/static/js/functions.js"></script>
 		<script src="/static/js/colpick.js"></script>
 		<link rel="stylesheet" href="/static/css/colpick.css"/>
+		<link rel="stylesheet" href="/static/css/main.css"/>
 		<link rel="stylesheet" href="/static/css/gui.css"/>
-		<script type="text/javascript">
-			$$(document).ready(function () {
-				$$('.colourpicker').colpick({
-					colorScheme:'dark',
-					layout:'rgbhex',
-					color:'ff8800',
-					onSubmit:function(hsb,hex,rgb,el) {
-						$$(el).css('background-color', '#'+hex)
-						submit_colour(el, rgb)
-						$$(el).colpickHide()
-					}
-				}).css('background-color', '#ff8800')
-			});
-		</script>
 	</head>
 <body>
-	<div class='colourpicker' id='cp1'></div>
-	<div class='colourpicker' id='cp2'></div>
-	<div class='colourpicker' id='cp3'></div>	
-	<input id='input_command' type='text' onkeypress='return command_keypress(event);'/>
+	<aside id='aside'>
+		<div id='div_modes'></div>
+	</aside>
+	<article>
+		<div id='div_main'>
+			<div class='colourpicker' id='div_cp1'></div>
+			<div class='colourpicker' id='div_cp2'></div>
+			<div class='colourpicker' id='div_cp3'></div>	
+			<input id='input_command' type='text' onkeypress='return command_keypress(event);'/>
+		</div>
+	</article>
 </body>
 </html>

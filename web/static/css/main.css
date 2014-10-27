@@ -1,0 +1,30 @@
+html, body {
+	overflow: 			hidden;
+}
+
+aside {
+	position: 		fixed;
+	width: 			20%;
+	height: 		100%;
+	padding: 		0 5px;
+	margin-right: 	0;
+	left: 			0;
+	top: 			0;
+	right:			-30px;
+	background: 	#1c4f63;
+	overflow-y: 	hidden;
+	color: 			#98dbcc;
+	display:		block;
+}
+
+article {
+	float:				right;
+	width: 				78%;
+	height: 			100%;
+	top: 				25px;
+	overflow-y: 		hidden;
+}
+
+#div_main {
+	width:				100%;
+}
