@@ -1,23 +1,10 @@
-$(document).ready(function () {
-	$('.colourpicker').colpick({
-		colorScheme:'dark',
-		layout:'rgbhex',
-		color:'ff8800',
-		onSubmit:function(hsb,hex,rgb,el) {
-			$(el).css('background-color', '#'+hex)
-			submit_colour(el, rgb)
-			$(el).colpickHide()
-		}
-	}).css('background-color', '#ff8800')
-});
-
 function command_keypress(event) {
 	console.log($('#input_command').val())	
 	if(event.which == 13) {
 		$.ajax({
 			type: 'POST',
 			url: server_address, 
-			data: JSON.stringify({data: $('#input_command').val()})
+			data: JSON.stringify({type: 'command', command: $('#input_command').val(), format: 'ascii'})
 		})
 		return false
 	} else {

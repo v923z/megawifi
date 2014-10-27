@@ -2,9 +2,12 @@
 	<title>Oscilloscope</title>
 	<head>
 		<script src="/static/js/jquery.min.js"></script>
+		<script src="/static/js/flot/jquery.flot.min.js"></script>
 		<script src="/static/js/modes.js"></script>
 		<script src="/static/js/functions.js"></script>
+		<script src="/static/js/oscilloscope.js"></script>
 		<link rel="stylesheet" href="/static/css/main.css"/>
+		<link rel="stylesheet" href="/static/css/oscilloscope.css"/>		
 	</head>
 <body>
 	<aside id='aside'>
@@ -12,7 +15,9 @@
 	</aside>
 	<article>
 		<div id='div_main'>
-			<div id='div_graph'></div>
+			<div id='div_graph' style="width:400px; height: 300px;"></div>
+			<input id='input_command' type='text' onkeypress='return command_keypress(event);'/>
+			<input type='button' onclick='return start_onclick(event);' id='input_oscilloscope_start' value='Start'/>
 		</div>
 	</article>
 </body>

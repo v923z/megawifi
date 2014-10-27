@@ -1,9 +1,9 @@
 var server_address = 'http://127.0.0.1:8080'
 
 var modes = new Array(
-['Colour picker, 6 lights', '/colourpicker.mode'], 
-['Oscilloscope', '/oscilloscope.mode'], 
-['Stroboscope', '/stroboscope.mode']
+['Colour picker, 6 lights', 'colourpicker'], 
+['Oscilloscope', 'oscilloscope'], 
+['Stroboscope', 'stroboscope']
 )
 
 $(document).ready(function () {
