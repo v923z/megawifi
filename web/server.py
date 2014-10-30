@@ -16,19 +16,21 @@ class Channel(object):
 		#except:
 			#print "Couldn't open port for communication"
 	
-	def pass_message(self, message):
+	def pass_message(self, data):
 		response = None
+		return 123
 		if self.channel:
-			self.channel.write(message.get('command'))
-			if message.get('format') in ('ascii'):
+			self.channel.write(data.get('command'))
+			if data.get('format') in ('ascii'):
 				response = self.channel.read_until(';', self.timeout)
-			elif message.get('format') in ('binary'):
+			elif data.get('format') in ('binary'):
+				data.get('byte_length')
 				pass
 				#response = self.channel.read_until(, self.timeout)
 		return response
 		
 	def close(self):
-		self.channel.close()
+		if self.channel: self.channel.close()
 
 channel = Channel('10.10.100.254', 8899)
 #print channel
@@ -36,10 +38,15 @@ channel = Channel('10.10.100.254', 8899)
 class Index(object):
 	def GET(self):
 		link = web.input()
-		return render.oscilloscope()
+		#if link.name.endswith('.html'): 
+		print link.name
+		with open(link.name, 'r') as fin:
+			html = fin.read()
+		return html
 			
 	def POST(self):
 		data = simplejson.loads(web.data())
+		print data
 		if data.get('type') in ('command'):
 			return simplejson.dumps({'response': channel.pass_message(data)})
 		else:

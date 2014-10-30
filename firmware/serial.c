@@ -6,6 +6,8 @@
 
 volatile uint8_t control_byte;
 volatile unsigned char data[32], buffer, num;
+uint8_t command[MAX_DATA];
+
 
 ISR(USART_UDRE_vect) {
 	UDR = data[buffer];
@@ -49,21 +51,19 @@ void USART_SendByte(unsigned char sbyte) {
 }
 
 void USART_OK(void) {
-	while( (UCSRB & UDRIE) ) {} ;
-	data[0] = 'K';
-	data[1] = 'O';
-	buffer = 2;
-	UCSRB |= _BV(UDRIE);
+	USART_SendString("OK");
 }
 
 void USART_SendString(char *string) {
-        unsigned int length = 0;
+        uint8_t length = 0;
         // In case the transmit buffer hasn't been emptied yet, we wait here
         while( (UCSRB & UDRIE) ) {} ;
 	
         while(*string != '\0') {
                 data[length++] = *string++;
         }
+        // Inserted
+        data[length++] = ';';
         buffer = length - 1;
         UCSRB |= _BV(UDRIE);
 }
@@ -112,4 +112,19 @@ void USART_SendInteger(unsigned int num, unsigned char delimiter) {
       buffer = length;
       // We enable the USART transmit interrupt here. This is disabled in the interrupt handler, once all data has been sent. 
       UCSRB |= _BV(UDRIE);
+}
+
+void USART_ReadCommand(uint8_t delimiter) {
+	uint16_t p = 0;
+	uint8_t c;
+	while(1) {
+	    c = USART_ReadByte();
+	    // Convert to lowercase characters
+	    if((c >= 'A') && (c <= 'Z')) c += 32;
+	    if((c == '\n') || (c == '\t')) c = ' ';
+	    command[p++] = c;
+	    if(c == delimiter) break;
+	}
+	//USART_SendString("Number of bytes: ");
+	//USART_SendInteger(p, ';');
 }

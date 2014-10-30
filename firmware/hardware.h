@@ -14,4 +14,11 @@
 #define		LED_OFF()		PORT(LED_PORT) &= ~_BV((PIN(LED_PORT, LED_PIN)))
 #define		LED_TOGGLE()	PORT(LED_PORT) ^= _BV(PIN(LED_PORT, LED_PIN))
 
+#define		CAMERA_PORT		PORTB
+#define		CAMERA_DDR		DDRB
+#define		CAMERA_FOCUS	_BV(PB1)
+#define		CAMERA_SHOT		_BV(PB3)
+#define		FOCUS()	{CAMERA_PORT &= ~CAMERA_FOCUS; _delay_ms(200); CAMERA_PORT |= CAMERA_FOCUS;}
+#define		SHOT()	{CAMERA_PORT &= ~CAMERA_SHOT; _delay_ms(200); CAMERA_PORT |= CAMERA_SHOT;}
+
 #endif

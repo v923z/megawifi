@@ -13,7 +13,7 @@ CFLAGS=-g -mmcu=$(MCU) -Wall -Wstrict-prototypes -Os -mcall-prologues $(CDEFS)
 OBJCOPY=avr-objcopy
 CC = avr-gcc
 TARGET = wifi
-OBJS = serial.o utils.o
+OBJS = serial.o utils.o parsing.o adc.o
 SRCS = $(OBJS, .o=.c)
 
 all: $(TARGET).hex
@@ -31,6 +31,12 @@ serial.o: serial.c serial.h
 utils.o: utils.c utils.h hardware.h
 	$(CC) $(CFLAGS) -c utils.c
 
+parsing.o:	parsing.c parsing.h
+	$(CC) $(CFLAGS) -c parsing.c
+
+adc.o:	adc.c adc.h
+	$(CC) $(CFLAGS) -c adc.c
+	
 fuseload:
 # the difference between high fuse bit 0xd9 and 0x59 is that the latter one
 # sets PC6 as standard input/output pin, while the first one as reset
