@@ -18,5 +18,5 @@ void USART_Restore(void);
 uint16_t USART_ReadInteger(uint8_t );
 void USART_SendInteger(unsigned int, unsigned char );
 void USART_ReadCommand(uint8_t );
-
+void USART_SendIntByte(uint16_t );
 #endif

@@ -131,3 +131,19 @@ void Trigger_Wait(uint8_t port, uint8_t high_low, uint8_t mask) {
 		while(*port_in != ~mask && control_byte == 0) { };
 	}	
 }
+
+void RGB_single(uint8_t red, uint8_t green, uint8_t blue) {
+	uint8_t counter = 0;
+	while(1) {
+		if(control_byte) return;
+		if(counter == 0) {
+			ALL_ON();
+		}
+		if(counter == red) RED_OFF();
+		if(counter == green) GREEN_OFF();
+		if(counter == blue) BLUE_OFF();
+		// This makes the loop about 1 ms long (3 us times 256 plus the overhead)
+		us_delay(3);
+		counter++;
+	}
+}

@@ -10,6 +10,11 @@
 #define		LED_PORT		B
 #define		LED_PIN			5
 
+#define		ALL_ON()		PORTB |= _BV(PB0) | _BV(PB1) | _BV(PB2)
+#define		RED_OFF()		PORTB &= ~_BV(PB0)
+#define		GREEN_OFF()		PORTB &= ~_BV(PB1)
+#define		BLUE_OFF()		PORTB &= ~_BV(PB2)
+
 #define		LED_ON()		PORT(LED_PORT) |= _BV(PIN(LED_PORT, LED_PIN))
 #define		LED_OFF()		PORT(LED_PORT) &= ~_BV((PIN(LED_PORT, LED_PIN)))
 #define		LED_TOGGLE()	PORT(LED_PORT) ^= _BV(PIN(LED_PORT, LED_PIN))

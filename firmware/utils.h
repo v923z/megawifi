@@ -17,5 +17,5 @@ void DirPort(uint8_t , uint8_t );
 uint8_t ReadPort(uint8_t );
 void Camera(uint8_t );
 void Trigger_Wait(uint8_t , uint8_t , uint8_t );
-
+void RGB_single(uint8_t , uint8_t , uint8_t );
 #endif

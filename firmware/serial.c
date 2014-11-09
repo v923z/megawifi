@@ -123,8 +123,14 @@ void USART_ReadCommand(uint8_t delimiter) {
 	    if((c >= 'A') && (c <= 'Z')) c += 32;
 	    if((c == '\n') || (c == '\t')) c = ' ';
 	    command[p++] = c;
+	    //USART_SendByte(c);
 	    if(c == delimiter) break;
 	}
-	//USART_SendString("Number of bytes: ");
 	//USART_SendInteger(p, ';');
+	//USART_SendString("Number of bytes: ");
+}
+
+void USART_SendIntByte(uint16_t num) {
+	USART_SendByte((uint8_t)(num & 0xff));
+	USART_SendByte((uint8_t)((num >> 8) & 0xff));	
 }

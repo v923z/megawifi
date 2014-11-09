@@ -89,3 +89,7 @@ void SetVariable(uint16_t ind, uint16_t value, uint8_t op) {
 	else if(op == '^') variable[ind] ^= value;
 	else if(op == '~') variable[ind] = ~variable[ind];
 }
+
+uint16_t GetVariable(uint16_t ind) {
+	return variable[ind];
+}
